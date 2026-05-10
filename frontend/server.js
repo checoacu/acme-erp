@@ -12,10 +12,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Conexión a MariaDB
 const db = mysql.createPool({
-  host: 'mariadb',        // nombre del servicio en docker-compose
-  user: 'acme_user',
-  password: 'acme_pass',
-  database: 'acme_db',
+  host: process.env.DB_HOST || 'mariadb',
+  user: process.env.DB_USER || 'acme_user',
+  password: process.env.DB_PASSWORD || 'acme_pass',
+  database: process.env.DB_NAME || 'acme_db',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
