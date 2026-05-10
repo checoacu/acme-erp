@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
 
-  # ─── SERVICIO BASE DE DATOS ────────────────────────────────
-   mariadb:
+  # SERVICIO BASE DE DATOS
+  mariadb:
     image: mariadb:10.11
     container_name: acme-mariadb
     restart: always
@@ -24,7 +22,7 @@ services:
       retries: 5
       start_period: 30s
 
-  # ─── SERVICIO FRONTEND ERP ─────────────────────────────────
+  # SERVICIO FRONTEND ERP
   frontend:
     build: ./frontend
     container_name: acme-frontend
@@ -42,7 +40,7 @@ services:
       mariadb:
         condition: service_healthy
 
-# ─── RED INTERNA ───────────────────────────────────────────
+# RED INTERNA
 networks:
   acme-net:
     driver: bridge
@@ -50,6 +48,6 @@ networks:
       config:
         - subnet: 172.20.0.0/24
 
-# ─── VOLUMEN PERSISTENTE ───────────────────────────────────
+# VOLUMEN PERSISTENTE
 volumes:
   acme-db-data:
