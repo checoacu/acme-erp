@@ -3,15 +3,15 @@ version: '3.8'
 services:
 
   # ─── SERVICIO BASE DE DATOS ────────────────────────────────
-  mariadb:
+   mariadb:
     image: mariadb:10.11
     container_name: acme-mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_pass
-      MYSQL_DATABASE: acme_db
-      MYSQL_USER: acme_user
-      MYSQL_PASSWORD: acme_pass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - acme-db-data:/var/lib/mysql
@@ -33,9 +33,9 @@ services:
       - "80:80"
     environment:
       DB_HOST: mariadb
-      DB_USER: acme_user
-      DB_PASSWORD: acme_pass
-      DB_NAME: acme_db
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
     networks:
       - acme-net
     depends_on:
