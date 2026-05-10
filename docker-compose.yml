@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+
+  # ─── SERVICIO BASE DE DATOS ────────────────────────────────
+  mariadb:
+    image: mariadb:10.11
+    container_name: acme-mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: acme_db
+      MYSQL_USER: acme_user
+      MYSQL_PASSWORD: acme_pass
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - acme-db-data:/var/lib/mysql
+    networks:
+      - acme-net
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ─── SERVICIO FRONTEND ERP ─────────────────────────────────
+  frontend:
+    build: ./frontend
+    container_name: acme-frontend
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      DB_HOST: mariadb
+      DB_USER: acme_user
+      DB_PASSWORD: acme_pass
+      DB_NAME: acme_db
+    networks:
+      - acme-net
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+# ─── RED INTERNA ───────────────────────────────────────────
+networks:
+  acme-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+# ─── VOLUMEN PERSISTENTE ───────────────────────────────────
+volumes:
+  acme-db-data:
