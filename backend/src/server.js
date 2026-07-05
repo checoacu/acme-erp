@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../public')));
+
+
 // Ruta de prueba de salud del servidor
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'acme-erp-backend' });

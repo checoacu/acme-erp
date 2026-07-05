@@ -1,0 +1,93 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body {
+  background: #1e1e1e;
+  color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.login-container, .dashboard-container {
+  background: #2b2b2b;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+h1 { font-size: 1.1rem; color: #ff6600; }
+h2 { font-size: 1rem; margin-bottom: 1.5rem; }
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.4rem 0 1rem 0;
+  border-radius: 5px;
+  border: none;
+}
+button {
+  width: 100%;
+  padding: 0.7rem;
+  background: #ff6600;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { background: #e65c00; }
+#mensaje { color: #ff8080; margin-top: 1rem; }
+.dashboard-container { width: 450px; text-align: left; }
+.logout { float: right; cursor: pointer; color: #ff6600; }
+
+
+.erp-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.erp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.erp-header h1 { font-size: 1.2rem; color: #ff6600; margin: 0; }
+#bienvenida { margin-right: 1rem; color: #ccc; font-size: 0.9rem; }
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.tab-btn {
+  background: #3a3a3a;
+  color: #f2f2f2;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.tab-btn.active { background: #ff6600; font-weight: bold; }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+th, td {
+  text-align: left;
+  padding: 0.6rem;
+  border-bottom: 1px solid #444;
+  font-size: 0.9rem;
+}
+th { color: #ff6600; }

@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ACME ERP - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="erp-container">
+    <header class="erp-header">
+      <h1>ACME Ferretería y Distribuidora de Energía</h1>
+      <div>
+        <span id="bienvenida"></span>
+        <span class="logout" id="logout">Cerrar sesión</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="inventario">Inventario</button>
+      <button class="tab-btn" data-tab="ventas">Ventas</button>
+      <button class="tab-btn" data-tab="clientes">Clientes</button>
+    </nav>
+
+    <section id="inventario" class="tab-content active">
+      <h2>Inventario de productos</h2>
+      <table id="tabla-inventario">
+        <thead>
+          <tr><th>SKU</th><th>Producto</th><th>Categoría</th><th>Stock</th><th>Precio</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="ventas" class="tab-content">
+      <h2>Ventas recientes</h2>
+      <table id="tabla-ventas">
+        <thead>
+          <tr><th>N° Venta</th><th>Cliente</th><th>Producto</th><th>Cantidad</th><th>Total</th><th>Fecha</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="clientes" class="tab-content">
+      <h2>Clientes</h2>
+      <table id="tabla-clientes">
+        <thead>
+          <tr><th>RUT</th><th>Nombre</th><th>Tipo</th><th>Ciudad</th><th>Compras totales</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
